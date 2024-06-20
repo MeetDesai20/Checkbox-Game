@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Exam</title>
+    
+    <script>
+            window.onload = crtbox;
+            function crtbox() 
+            {
+                var container = document.getElementById("checkboxContainer");
+                for (var i = 1; i <= 100; i++) {
+                    var checkbox = document.createElement("input");
+                    checkbox.type = "checkbox";
+                    checkbox.id = "checkbox" + i;
+                    checkbox.className = "checkbox-item";
+                    checkbox.onchange = toggleCheck;
+                    container.appendChild(checkbox);
+                }
+            }
+        
+            function toggleCheck() 
+            {
+                var clickedId = parseInt(this.id.replace("checkbox", ""));
+                var checkboxes = document.querySelectorAll(".checkbox-item");
+        
+                if (
+                    clickedId === 1 ||
+                    clickedId === 10 ||
+                    clickedId === 91 ||
+                    clickedId === 100
+                ) {
+                    checkboxes.forEach(function (checkbox, index) {
+                    if (index + 1 !== clickedId) {
+                        checkbox.checked = !checkbox.checked;
+                    }
+                    });
+                }
+            }
+        </script>
+
+        <style>
+            * {
+                margin: 0%;
+                padding: 0%;
+                box-sizing: border-box;
+            }
+            .checkbox-container {
+                height: 300px;
+                width: 400px;
+                margin: 10px auto;
+                display: grid;
+                grid-template-columns: repeat(10,1fr);
+                grid-template-rows: repeat(10,1fr);
+                row-gap: 8px;
+                column-gap: 5px;
+            }
+            .checkbox-item {
+                height: 30px;
+                width: 30px;
+            }
+        </style>
+</head>
+<body>
+    <div class="checkbox-container" id="checkboxContainer">
+
+    </div>
+</body>
+</html>
